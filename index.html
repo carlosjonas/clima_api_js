@@ -16,7 +16,41 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
-    <h1>Clima Aqui!</h1>
+
+    <div class="container">
+      <div class="form">
+        <h3>Confira o clima de uma cidade:</h3>
+        <div class="form-input-container">
+          <input type="text" name="busca" placeholder="Digite o nome de uma cidade" id="city-input">
+          <button id="search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </div>
+      <div id="weather-data">
+        <h2>
+          <i class="fa-solid fa-location-dot"></i>
+          <span id="city">Maceió</span>
+          <img src="#" alt="Bandeira do país" id="country">
+          <p id="temperature"><span>39</span>&deg;C</p>
+          <div id="description-container">
+            <p id="description">Nublado</p>
+            <img src="#" alt="Condições do tempo" id="weather-icon">
+          </div>
+          <div id="details-continer">
+            <p id="umidity">
+              <i class="fa-solid fa-droplet"></i>
+              <span>48%</span>
+            </p>
+            <p id="wind">
+              <i class="fa-solid fa-wind"></i>
+              <span>3km/h</span>
+            </p>
+          </div>
+        </h2>
+      </div>
+    </div>
+
     <!--BOOTSTRAP-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <!--SCRIPTS-->
