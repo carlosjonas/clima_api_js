@@ -7,22 +7,41 @@ const apiCountryURL = "https://countryflagsapi.com/png/";
 const cityInput = document.querySelector("#city-input");
 const searchBtn = document.querySelector("#search");
 
-const cityElemnt = document.querySelector("#city");
-const tempElemnt = document.querySelector("#temperature span");
-const descElemnt = document.querySelector("#description");
-const weatherElemnt = document.querySelector("#weather-icon");
-const countryElemnt = document.querySelector("#country");
-const umidityElemnt = document.querySelector("#umidity span");
-const windElemnt = document.querySelector("#wind span");
+const cityElement = document.querySelector("#city");
+const tempElement = document.querySelector("#temperature span");
+const descElement = document.querySelector("#description");
+const weatherElement = document.querySelector("#weather-icon");
+const countryElement = document.querySelector("#country");
+const humidityElement = document.querySelector("#umidity span");
+const windElement = document.querySelector("#wind span");
 
 //Funções
 
+//Buscando a api com a key
 const getWeatherData = async(city) =>{
-	const apiWeatherURL = 
-}
-const showWeatherData = (city) =>{
-	console.log(city);
-}
+
+	// Adicionando a URL da api
+	const apiWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}&lang=pt_br`;
+
+	// Utilizando o fetch api da aplicação
+	const res = await fetch(apiWeatherURL);
+	const data = await res.json();
+
+	return data;
+};
+
+// Mostrando os dados da api
+const showWeatherData = async(city) =>{
+	const data = await getWeatherData(city);
+
+	cityElement.innerText = data.name;
+	tempElement.innerText = parseInt(data.main.temp);
+	descElement.innerText = data.weather[0].description;
+	weatherElement.setAttribute("src", `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`);
+	countryElement.setAttribute("src", apiCountryURL + data.sys.country);
+	humidityElement.innerText = `${data.main.humidity}%`;
+	windElement.innerText = `${data.wind.speed}km/h`
+};
 //Eventos
 
 /*Evento de clique do botão de buscar a cidade*/
@@ -30,7 +49,7 @@ searchBtn.addEventListener("click", (e) =>{
 	e.preventDefault();
 
 	const city = cityInput.value;
-	
+
 	showWeatherData(city);
 
 })
